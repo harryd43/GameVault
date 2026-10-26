@@ -1,0 +1,81 @@
+@ApiPlayground_HostAddress = http://localhost:5162
+
+### Get all games
+GET {{ApiPlayground_HostAddress}}/api/games/
+Accept: application/json
+
+### Get game by ID
+
+GET {{ApiPlayground_HostAddress}}/api/games/1
+Accept: application/json
+
+### Create game
+
+POST {{ApiPlayground_HostAddress}}/api/games
+Content-Type: application/json
+{
+  "name": "Mortal Kombat 1",
+  "developer": "NetherRealm Studios",
+  "releaseDate": "2023-09-19"
+}
+
+### Delete game by ID
+
+DELETE {{ApiPlayground_HostAddress}}/api/games/8
+
+### Update game by ID
+PUT {{ApiPlayground_HostAddress}}/api/games/7
+Content-Type: application/json
+{
+  "name": "Mortal Kombat 1",
+  "developer": "NetherRealm Studios",
+  "releaseDate": "2023-09-19"
+}
+
+### Get all platforms
+GET {{ApiPlayground_HostAddress}}/api/platforms/
+Accept: application/json
+
+### Get platform by ID
+GET {{ApiPlayground_HostAddress}}/api/platforms/1
+Accept: application/json
+
+### Create new platform
+POST {{ApiPlayground_HostAddress}}/api/platforms
+Content-Type: application/json
+{
+  "name": "PC"
+}
+
+### Delete platform by ID
+DELETE {{ApiPlayground_HostAddress}}/api/platforms/2
+
+### Add platform Id to game Id
+POST {{ApiPlayground_HostAddress}}/api/games/7/platforms/1
+
+### Delete platform Id from game Id
+DELETE {{ApiPlayground_HostAddress}}/api/games/7/platforms/1
+
+### Get all genres
+GET {{ApiPlayground_HostAddress}}/api/genres/
+Accept: application/json
+
+### Get genre by ID
+GET {{ApiPlayground_HostAddress}}/api/genres/1
+Accept: application/json
+
+### Create new genre
+POST {{ApiPlayground_HostAddress}}/api/genres
+Content-Type: application/json
+{
+  "name": "Shooting"
+}
+
+### Delete genre by ID
+DELETE {{ApiPlayground_HostAddress}}/api/genres/1
+
+### Add genre Id to game Id
+POST {{ApiPlayground_HostAddress}}/api/games/7/genres/1
+
+### Delete genre Id from game Id
+DELETE {{ApiPlayground_HostAddress}}/api/games/7/genres/1
