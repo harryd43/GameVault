@@ -223,7 +223,7 @@ namespace ApiPlayground.Migrations
                     b.HasOne("ApiPlayground.Game", "Game")
                         .WithMany()
                         .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Collection");
@@ -274,13 +274,13 @@ namespace ApiPlayground.Migrations
                     b.HasOne("ApiPlayground.Game", "Game")
                         .WithMany()
                         .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("ApiPlayground.Platform", "Platform")
                         .WithMany()
                         .HasForeignKey("PlatformID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("ApiPlayground.User", "User")

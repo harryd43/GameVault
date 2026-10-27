@@ -21,6 +21,21 @@ public class GameVaultDbContext : DbContext
         modelBuilder.Entity<GameGenre>().HasKey(gg => new { gg.GameId, gg.GenreId });
         modelBuilder.Entity<CollectionGame>().HasKey(cg => new { cg.CollectionId, cg.GameId });
         modelBuilder.Entity<LibraryEntry>().HasIndex(le => new { le.UserId, le.GameId }).IsUnique();
+        modelBuilder.Entity<LibraryEntry>()
+            .HasOne(le => le.Platform)
+            .WithMany()
+            .HasForeignKey(le => le.PlatformID)
+            .OnDelete(DeleteBehavior.Restrict);
+        modelBuilder.Entity<LibraryEntry>()
+            .HasOne(le => le.Game)
+            .WithMany()
+            .HasForeignKey(le => le.GameId)
+            .OnDelete(DeleteBehavior.Restrict);
+        modelBuilder.Entity<CollectionGame>()
+            .HasOne(cg => cg.Game)
+            .WithMany()
+            .HasForeignKey(cg => cg.GameId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 
 }

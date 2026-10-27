@@ -70,6 +70,11 @@ namespace ApiPlayground.Controllers
                 return NotFound();
             }
 
+            if (_context.LibraryEntries.Any(le => le.PlatformID == id))
+            {
+                return Conflict("Cannot delete platform because it is associated with one or more library entries.");
+            }
+
             _context.Platforms.Remove(platform);
             _context.SaveChanges();
 

@@ -55,6 +55,15 @@ namespace ApiPlayground.Controllers
             {
                 return NotFound();
             }
+            if (_context.LibraryEntries.Any(le => le.GameId == id))
+            {
+                return Conflict("Cannot delete game because it is in one or more users libraries.");
+            }
+
+            if (_context.CollectionGames.Any(le => le.GameId == id))
+            {
+                return Conflict("Cannot delete game because it is in one or more collections.");
+            }
 
             _context.Games.Remove(game);
             _context.SaveChanges();
@@ -71,6 +80,7 @@ namespace ApiPlayground.Controllers
             {
                 return NotFound("Association not found.");
             }
+
             _context.GamePlatforms.Remove(gamePlatform);
             _context.SaveChanges();
             return NoContent();
